@@ -1,0 +1,4 @@
+What is the area of the a square with a side length of 8?
+64
+64.0
+sixty-four
