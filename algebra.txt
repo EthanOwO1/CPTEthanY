@@ -10,3 +10,7 @@ At a shop, the store manager bought 60 balloons. The store manager knows that 30
 22
 22.0
 twenty-two
+What is the value of x in this equation? 3x + 2 = 8
+2
+2.0
+two

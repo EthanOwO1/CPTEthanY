@@ -62,40 +62,39 @@ public class MathTrainingGame{
 				String strType = con.readLine();
 				con.clear();
 				
+				
+				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
 					TextInputFile linear = new TextInputFile("linear.txt");
-					
-					// Initialization
-					strQuestion = "";
-					intAnswer = 0;
-					dblAnswer = 0.0;
-					strAnswer = "";
-					intCorrectAnswer = 0;
 					
 					while(linear.eof() == false){
 						strQuestion = linear.readLine();
 						intAnswer = linear.readInt();
 						dblAnswer = linear.readDouble();
 						strAnswer = linear.readLine();
+						
+						con.println("Question: ");
+						con.println(strQuestion);
+						String strResponse = con.readLine();
+					
+						if(strResponse.equalsIgnoreCase(strResponse)){
+						
+							con.println("Congrats! You got the correct answer.");
+							intCorrectAnswer += 1;
+							
+							con.sleep(3000);
+						
+						} else {
+							con.println("You got the wrong answer. It should either be: " + strAnswer + ", " + intAnswer + ", " + dblAnswer);
+							con.sleep(3000);
+						}
+						
+						intNumQuestions += 1;
+						dblPercentage = intCorrectAnswer / intNumQuestions;
+						con.clear();
 					}
 					
-					con.println("Question: ");
-					con.println(strQuestion);
-					String strUAnswer = con.readLine();
-					
-					if(strUAnswer.equalsIgnoreCase(strAnswer) || 
-					Integer.parseInt(strUAnswer) == intAnswer || 
-					Double.parseDouble(strUAnswer) == dblAnswer){
-						
-						con.println("Congrats! You got the correct answer.");
-						intCorrectAnswer += 1;
-						
-					} else {
-						con.println("You got the wrong answer. It should be 2 or 2.0, or two.");
-					}
-					
-					con.clear();
-					
+					// Calculating the percentage of answers
 					con.println("Number of correct answer: " + intCorrectAnswer);
 					con.sleep(2000);
 					con.println("Thanks for playing!");
@@ -119,8 +118,7 @@ public class MathTrainingGame{
 						con.println(strQuestion);
 						String strResponse = con.readLine();
 						
-						if(strResponse.equalsIgnoreCase(strAnswer) ||  
-						Double.parseDouble(strResponse) == dblAnswer){
+						if(strResponse.equalsIgnoreCase(strAnswer)){
 						
 							con.println("Congrats! You got the correct answer.");
 							intCorrectAnswer += 1;
