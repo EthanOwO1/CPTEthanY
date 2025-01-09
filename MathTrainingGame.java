@@ -6,6 +6,9 @@ public class MathTrainingGame{
 		
 		// Variables and Initialization
 		String strQuestion = "";
+		String strAnswer1 = "";
+		String strAnswer2 = "";
+		String strAnswer3 = "";
 		int intAnswer = 0;
 		double dblAnswer = 0.0;
 		String strAnswer = "";
@@ -70,21 +73,37 @@ public class MathTrainingGame{
 				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
 					TextInputFile linear = new TextInputFile("linear.txt");
+
+					while(linear.eof() == false){
+						
+						strQuestion = linear.readLine();
+						strAnswer1 = linear.readLine();
+						strAnswer2 = linear.readLine();
+						strAnswer3 = linear.readLine();
+						intQuestions += 1;
+					}
+					linear.close();
+					
 					strRandomNum = new String[intQuestions][5];
 
+					System.out.println("Continue");
 					
+					linear = new TextInputFile("linear.txt");
+
 					while(linear.eof() == false){
-						intQuestions += 1;
-						String strRandomNum1 = Integer.toString((int)(Math.random() * intQuestions + 1));
+						String strRandomNum1;
 						
 						int intRow;
 						
 						for(intRow = 0; intRow < intQuestions; intRow++){
-							strRandomNum[intQuestions][0] = linear.readLine();
-							strRandomNum[intQuestions][1] = linear.readLine();
-							strRandomNum[intQuestions][2] = linear.readLine();
-							strRandomNum[intQuestions][3] = linear.readLine();
-							strRandomNum[intQuestions][4] = strRandomNum1;
+							
+							strRandomNum1 = Integer.toString((int)(Math.random() * 100 + 1));
+							
+							strRandomNum[intRow][0] = linear.readLine();
+							strRandomNum[intRow][1] = linear.readLine();
+							strRandomNum[intRow][2] = linear.readLine();
+							strRandomNum[intRow][3] = linear.readLine();
+							strRandomNum[intRow][4] = strRandomNum1;
 						}
 					}
 					
@@ -98,46 +117,47 @@ public class MathTrainingGame{
 					String strTempRandomNum;
 					int intRow2;
 					int intRow3;
+				
 					
-					for(intRow3 = 0; intRow3 < 10-1; intRow3++){
+					for(intRow3 = 0; intRow3 < intQuestions - 1; intRow3++){
 						
-						for(intRow2 = 0; intRow2 < 10 - 1 - intRow3; intRow2++){
+						for(intRow2 = 0; intRow2 < intQuestions - 1 - intRow3; intRow2++){
 							// Bubble sort. If left is bigger than right
 							
-							if(Integer.parseInt(strRandomNum[intRow2][5]) > Integer.parseInt(strRandomNum[intRow2 + 1][5])){
+							if(Integer.parseInt(strRandomNum[intRow2][4]) > Integer.parseInt(strRandomNum[intRow2 + 1][4])){
 								
 								// Take the left item
-								strTempQuestion = strRandomNum[intQuestions][0];
-								strTempAns1 = strRandomNum[intQuestions][1];
-								strTempAns2 = strRandomNum[intQuestions][2];
-								strTempAns3 = strRandomNum[intQuestions][3];
+								strTempQuestion = strRandomNum[intRow2][0];
+								strTempAns1 = strRandomNum[intRow2][1];
+								strTempAns2 = strRandomNum[intRow2][2];
+								strTempAns3 = strRandomNum[intRow2][3];
 								
 								// Right item moves to the left
-								strRandomNum[intQuestions][0] = strRandomNum[intQuestions + 1][0];
-								strRandomNum[intQuestions][1] = strRandomNum[intQuestions + 1][1];
-								strRandomNum[intQuestions][2] = strRandomNum[intQuestions + 1][2];
-								strRandomNum[intQuestions][3] = strRandomNum[intQuestions + 1][3];
+								strRandomNum[intRow2][0] = strRandomNum[intRow2 + 1][0];
+								strRandomNum[intRow2][1] = strRandomNum[intRow2 + 1][1];
+								strRandomNum[intRow2][2] = strRandomNum[intRow2 + 1][2];
+								strRandomNum[intRow2][3] = strRandomNum[intRow2 + 1][3];
 								
 								// Put temporary value on the right
-								strRandomNum[intQuestions + 1][0] = strTempQuestion;
-								strRandomNum[intQuestions + 1][1] = strTempAns1;
-								strRandomNum[intQuestions + 1][2] = strTempAns2;
-								strRandomNum[intQuestions + 1][3] = strTempAns3;
+								strRandomNum[intRow2 + 1][0] = strTempQuestion;
+								strRandomNum[intRow2 + 1][1] = strTempAns1;
+								strRandomNum[intRow2 + 1][2] = strTempAns2;
+								strRandomNum[intRow2 + 1][3] = strTempAns3;
 							}
 						}
 					}
-					
+										
 					int intLoop;
 					
 					for(intLoop = 0; intLoop < intQuestions; intLoop++){
 					
 						con.println("Question: ");
-						con.println(strQuestion);
+						con.println(strRandomNum[intLoop][0]);
 						String strResponse = con.readLine();
 					
-						if(strResponse.equalsIgnoreCase(strResponse) || 
-						Integer.parseInt(strResponse) == intAnswer ||
-						Double.parseDouble(strResponse) == dblAnswer
+						if(strResponse.equalsIgnoreCase(strRandomNum[intLoop][1]) || 
+						strResponse.equalsIgnoreCase(strRandomNum[intLoop][2]) ||
+						strResponse.equalsIgnoreCase(strRandomNum[intLoop][3])
 						){
 						
 							con.println("Congrats! You got the correct answer.");
@@ -146,7 +166,7 @@ public class MathTrainingGame{
 							con.sleep(3000);
 						
 						} else {
-							con.println("You got the wrong answer. It should either be: " + strAnswer + ", " + intAnswer + ", " + dblAnswer);
+							con.println("You got the wrong answer. It should either be: " + strRandomNum[intLoop][1] + ", " + strRandomNum[intLoop][2] + ", " + strRandomNum[intLoop][3]);
 							con.sleep(3000);
 						}
 						
@@ -165,6 +185,12 @@ public class MathTrainingGame{
 					con.clear();
 
 				}
+				
+				
+				
+				
+				
+				
 				
 				// Algebra Math Practice
 				if(strType.equalsIgnoreCase("algebra")){

@@ -14,3 +14,27 @@ What is the value of x in this equation? 3x + 2 = 8
 2
 2.0
 two
+Find the value of z. 17z + 18 = 66 + 5z
+4
+4.0
+four
+Expand and Simplify. 1/2(4^2 - 3^2) + 10
+13.5
+27/2
+13 1/2
+Simplify. (4 x 2)^2
+64
+64.0
+sixty-four
+Brandon is 6 years older than Joshua. In 4 years, Brandon will be twice as old as Joshua. How old is Brandon now?
+16
+16.0
+sixteen
+The sum of 4 times a number and 4 less than 3 times the same number is 67. What is the value of the unknown number?
+9
+9.0
+nine
+Simplify this equation. (8^2 x 5^2)^0
+1
+1.0
+one
