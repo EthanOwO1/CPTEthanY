@@ -70,134 +70,23 @@ public class MathTrainingGame{
 				
 				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
-					
 					MathTrainingTests.linearTest(con);
-					
 				}
 				
 				
 				// Algebra Math Practice
 				if(strType.equalsIgnoreCase("algebra")){
-					TextInputFile algebra = new TextInputFile("algebra.txt");
-					
-					while(algebra.eof() == false){
-						strQuestion = algebra.readLine();
-						intAnswer = algebra.readInt();
-						dblAnswer = algebra.readDouble();
-						strAnswer = algebra.readLine();
-						
-						con.println("Question: ");
-						con.println(strQuestion);
-						String strResponse = con.readLine();
-						
-						if(strResponse.equalsIgnoreCase(strResponse) || 
-						Integer.parseInt(strResponse) == intAnswer ||
-						Double.parseDouble(strResponse) == dblAnswer){
-						
-							con.println("Congrats! You got the correct answer.");
-							intCorrectAnswer += 1;
-							
-							con.sleep(3000);
-						
-						} else {
-							con.println("You got the wrong answer. It should either be: " + strAnswer + ", " + intAnswer + ", " + dblAnswer);
-							con.sleep(3000);
-						}
-						
-						intNumQuestions += 1;
-						dblPercentage = intCorrectAnswer / intNumQuestions;
-						con.clear();
-					}
-					
-					// Calculating the percentage of answers
-					con.println("Number of correct answer: " + intCorrectAnswer);
-					con.sleep(2000);
-					con.println("Thanks for playing!");
-					con.println("Return back to main menu?");
-					String strBack = con.readLine();
-					con.clear();
-				
+					MathTrainingTests.algebraTest(con);
 				}
 			
 				// Patterns Math Practice
-				if(strType.equalsIgnoreCase("patterns")){
-					TextInputFile patterns = new TextInputFile("patterns.txt");
-					
-					while(patterns.eof() == false){
-						strQuestion = patterns.readLine();
-						intAnswer = patterns.readInt();
-						dblAnswer = patterns.readDouble();
-						strAnswer = patterns.readLine();
-						
-						con.println("Question: ");
-						con.println(strQuestion);
-						String strResponse = con.readLine();
-						
-						if(strResponse.equalsIgnoreCase(strAnswer)){
-						
-							con.println("Congrats! You got the correct answer.");
-							intCorrectAnswer += 1;
-							
-							con.sleep(3000);
-						
-						} else {
-							con.println("You got the wrong answer. It should either be: " + strAnswer + ", " + intAnswer + ", " + dblAnswer);
-							con.sleep(3000);
-						}
-						
-						intNumQuestions += 1;
-						dblPercentage = intCorrectAnswer / intNumQuestions;
-						con.clear();
-					}
-					
-					// Calculating the percentage of answers
-					con.println("Number of correct answer: " + intCorrectAnswer);
-					con.sleep(2000);
-					con.println("Thanks for playing!");
-					con.println("Return back to main menu?");
-					String strBack = con.readLine();
-					con.clear();
+				if(strType.equalsIgnoreCase("algebra")){
+					MathTrainingTests.patternsTest(con);
 				}	
 
 				// Area Math Practice
 				if(strType.equalsIgnoreCase("area")){
-					TextInputFile area = new TextInputFile("area.txt");
-					
-					while(area.eof() == false){
-						strQuestion = area.readLine();
-						intAnswer = area.readInt();
-						dblAnswer = area.readDouble();
-						strAnswer = area.readLine();
-						
-						con.println("Question: ");
-						con.println(strQuestion);
-						String strResponse = con.readLine();
-						
-						if(strResponse.equalsIgnoreCase(strAnswer)){
-						
-							con.println("Congrats! You got the correct answer.");
-							intCorrectAnswer += 1;
-							
-							con.sleep(3000);
-						
-						} else {
-							con.println("You got the wrong answer. It should either be: " + strAnswer + ", " + intAnswer + ", " + dblAnswer);
-							con.sleep(3000);
-						}
-						
-						intNumQuestions += 1;
-						dblPercentage = intCorrectAnswer / intNumQuestions;
-						con.clear();
-					}
-					
-					// Calculating the percentage of answers
-					con.println("Number of correct answer: " + intCorrectAnswer);
-					con.sleep(2000);
-					con.println("Thanks for playing!");
-					con.println("Return back to main menu?");
-					String strBack = con.readLine();
-					con.clear();
-
+					MathTrainingTests.areaTest(con);
 				}
 			}
 			
