@@ -90,6 +90,11 @@ public class MathTrainingGame{
 				}
 			}
 			
+			else if(strDecision.equalsIgnoreCase("Secret")){
+				con.println("Welcome to our secret menu");
+				con.println("Did you know that if we removed the wings from a fly, it becomes a walk?");
+			}
+			
 			else{
 				con.println("Cannot find the command");
 				con.println("Return back to main menu?");
