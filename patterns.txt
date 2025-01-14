@@ -2,3 +2,19 @@ What is the next number in this sequence? 1, 1, 2, 3, 5, 8, ?
 13
 13.0
 thirteen
+Fill in the missing number: 25, ___, 35, 40
+30
+30.0
+thirty
+Find the missing number: 9, 16, 30, 58, ?
+114
+114.0
+one hundred and fourteen
+What is the third number of this sequence? 2, 3, ___, 7, 11
+5
+5.0
+five
+What is the first number of this number sequence? __, 28, 22, 31, 19
+25
+25.0
+twenty-five

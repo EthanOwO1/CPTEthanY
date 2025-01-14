@@ -5,13 +5,6 @@ public class MathTrainingGame{
 		Console con = new Console("Math Training Game", 1280, 720);
 		
 		// Variables and Initialization
-		String strQuestion = "";
-		String strAnswer1 = "";
-		String strAnswer2 = "";
-		String strAnswer3 = "";
-		int intAnswer = 0;
-		double dblAnswer = 0.0;
-		String strAnswer = "";
 		int intCorrectAnswer = 0;
 		int intNumQuestions = 0;
 		double dblPercentage = 0.0;
@@ -56,6 +49,8 @@ public class MathTrainingGame{
 				
 			// The Play Game Screen 
 			} else if(strDecision.equalsIgnoreCase("p")){
+				TextInputFile tests = new TextInputFile("tests.txt");
+				
 				con.println("Please enter your name: ");
 				String strName = con.readLine();
 				con.clear();
@@ -63,10 +58,14 @@ public class MathTrainingGame{
 				con.println("Hi " + strName);
 				con.sleep(1000);
 				con.println("Welcome to our game! Please choose which type of quiz you would like to do?");
-				con.println("(Linear, Algebra, Patterns, Area)");
+
+				while(tests.eof() == false){
+					con.print(tests.readLine() + " ");
+				}	
+				
+				con.println();
 				String strType = con.readLine();
 				con.clear();
-				
 				
 				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
@@ -93,6 +92,12 @@ public class MathTrainingGame{
 			else if(strDecision.equalsIgnoreCase("Secret")){
 				con.println("Welcome to our secret menu");
 				con.println("Did you know that if we removed the wings from a fly, it becomes a walk?");
+				con.println("😂😂😂");
+				con.sleep(3000);
+				con.println("Return back to main menu?");
+				String strBack = con.readLine();
+				con.clear();
+				
 			}
 			
 			else{

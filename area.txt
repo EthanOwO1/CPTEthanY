@@ -2,3 +2,19 @@ What is the area of the a square with a side length of 8?
 64
 64.0
 sixty-four
+A triangle has a base of 4 m and a height of 8 m. What is the area of this triangle?
+16
+16.0
+sixteen
+Darren wants to find the area of a circle with a diameter of 8 cm. What will its area be? (Round to the nearest tenth place).
+50.3
+fifty and three tenths
+503/10
+A rectangle has a length of 9 inches and a height of 3 inches. What is its area?
+27
+27.0
+twenty-seven
+Find the area of a trapezoid with a 12 cm and a 9 cm base. Its height is 30 cm. 
+315
+315.0
+three hundred and fifteen
