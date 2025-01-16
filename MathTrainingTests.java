@@ -3,6 +3,7 @@ import arc.*;
 public class MathTrainingTests{
 	public static void linearTest(Console con){
 		TextInputFile linear = new TextInputFile("linear.txt");
+		MathTrainingGame game = new MathTrainingGame();
 
 		// Creating an array to randomize the questions
 		String strLinear[][];
@@ -121,13 +122,17 @@ public class MathTrainingTests{
 			
 		}
 		
+		
 		// Calculating the percentage of answers
-		con.println("Number of correct answer: " + intCorrectAnswer);
+		con.println("Final Results: ");
+		con.println("Name - ");
+		con.println("Win Percentage: " + dblPercentage);
 		con.sleep(2000);
 		con.println("Thanks for playing!");
 		con.println("Return back to main menu?");
 		String strBack = con.readLine();
 		con.clear();
+		
 	}
 	
 	

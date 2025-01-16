@@ -1,3 +1,8 @@
+// Ethan Y
+// Math Training Game
+// 2024-01-21
+// Version 1.1
+
 import arc.*;
 
 public class MathTrainingGame{
@@ -9,8 +14,7 @@ public class MathTrainingGame{
 		int intNumQuestions = 0;
 		double dblPercentage = 0.0;
 		int intQuestions = 0;
-		
-		
+		String strName = "";		
 		
 		// Main Screen of the Math Training Game
 		while(true){
@@ -52,7 +56,7 @@ public class MathTrainingGame{
 				TextInputFile tests = new TextInputFile("tests.txt");
 				
 				con.println("Please enter your name: ");
-				String strName = con.readLine();
+				strName = con.readLine();
 				con.clear();
 				
 				con.println("Hi " + strName);
