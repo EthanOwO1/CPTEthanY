@@ -1,13 +1,13 @@
 import arc.*;
 
 public class MathTrainingTests{
-	public static double linearTest(Console con){
+	public static void linearTest(Console con){
 		TextInputFile linear = new TextInputFile("linear.txt");
 
 		// Creating an array to randomize the questions
 		String strLinear[][];
 
-		// Variables
+		// Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
@@ -18,9 +18,8 @@ public class MathTrainingTests{
 		double dblNumQuestions = 0.0;
 		double dblPercentage = 0.0;
 		
+		// Retrieving strName from the main program
 		strName = MathTrainingGame.strName;
-
-		
 
 		while(linear.eof() == false){
 						
@@ -122,14 +121,30 @@ public class MathTrainingTests{
 				con.sleep(3000);
 			}
 			dblNumQuestions += 1;
-			dblPercentage = Math.round((dblCorrectAnswer / dblNumQuestions) * 100 * 100) / 100;
+			dblPercentage = Math.round(((dblCorrectAnswer / dblNumQuestions) * 100) * 100) / 100;
 
 			con.clear();
 		}
+				
+		// Printing the name to the leaderboard
+		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
 		
-		dblPercentage = (dblCorrectAnswer / intQuestions) * 100;
-		return dblPercentage;
+		leaderboard.println(strName);
+		leaderboard.println("Linear");
+		leaderboard.println(dblPercentage);
 		
+		
+		// Displaying final results
+		con.println("Final Results: ");
+		con.println("Name:           " + strName);
+		con.println("Test type: 	 Linear");
+		con.println("Win Percentage: %" + dblPercentage);
+		
+		con.sleep(2000);
+		con.println("Thanks for playing!");
+		con.println("Return back to main menu?");
+		String strBack = con.readLine();
+		con.clear();
 	}
 	
 	
@@ -139,16 +154,19 @@ public class MathTrainingTests{
 		// Creating an array to randomize the questions
 		String strAlgebra[][];
 
-		// Variables
+		// Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
 		String strAnswer3 = "";
+		String strName = "";
 		int intQuestions = 0;
-		int intCorrectAnswer = 0;
-		int intNumQuestions = 0;
+		double dblCorrectAnswer = 0.0;
+		double dblNumQuestions = 0.0;
 		double dblPercentage = 0.0;
 		
+		// Retrieving the data stored in strName
+		strName = MathTrainingGame.strName;
 
 		while(algebra.eof() == false){
 						
@@ -227,7 +245,10 @@ public class MathTrainingTests{
 		int intLoop;
 		
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
-		
+			
+			con.println(strName + "					Algebra	Test				%" + dblPercentage);
+			con.println();
+			
 			con.println("Question: ");
 			con.println(strAlgebra[intLoop][0]);
 			String strResponse = con.readLine();
@@ -238,7 +259,7 @@ public class MathTrainingTests{
 			){
 			
 				con.println("Congrats! You got the correct answer.");
-				intCorrectAnswer += 1;
+				dblCorrectAnswer += 1;
 				
 				con.sleep(3000);
 			
@@ -246,20 +267,32 @@ public class MathTrainingTests{
 				con.println("You got the wrong answer. It should either be: " + strAlgebra[intLoop][1] + ", " + strAlgebra[intLoop][2] + ", " + strAlgebra[intLoop][3]);
 				con.sleep(3000);
 			}
-			
-			intNumQuestions += 1;
-			dblPercentage = intCorrectAnswer / intNumQuestions;
+			dblNumQuestions += 1;
+			dblPercentage = Math.round(((dblCorrectAnswer / dblNumQuestions) * 100) * 100) / 100;
+
 			con.clear();
-			
-		}
+		}	
 		
-		// Calculating the percentage of answers
-		con.println("Number of correct answer: " + intCorrectAnswer);
+		// Printing the results to the leaderboard
+		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
+		
+		leaderboard.println(strName);
+		leaderboard.println("Algebra");
+		leaderboard.println(dblPercentage);
+		
+		
+		// Displaying final results
+		con.println("Final Results: ");
+		con.println("Name:           " + strName);
+		con.println("Test type: 	 Algebra");
+		con.println("Win Percentage: %" + dblPercentage);
+		
 		con.sleep(2000);
 		con.println("Thanks for playing!");
 		con.println("Return back to main menu?");
 		String strBack = con.readLine();
 		con.clear();
+		
 	}
 	
 	public static void patternsTest(Console con){
@@ -273,11 +306,14 @@ public class MathTrainingTests{
 		String strAnswer1 = "";
 		String strAnswer2 = "";
 		String strAnswer3 = "";
+		String strName = "";
 		int intQuestions = 0;
-		int intCorrectAnswer = 0;
-		int intNumQuestions = 0;
+		double dblCorrectAnswer = 0.0;
+		double dblNumQuestions = 0.0;
 		double dblPercentage = 0.0;
 		
+		// Retrieving the data stored in strName
+		strName = MathTrainingGame.strName;
 
 		while(patterns.eof() == false){
 						
@@ -356,7 +392,10 @@ public class MathTrainingTests{
 		int intLoop;
 		
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
-		
+			
+			con.println(strName + "					Patterns Test				%" + dblPercentage);
+			con.println();
+			
 			con.println("Question: ");
 			con.println(strPatterns[intLoop][0]);
 			String strResponse = con.readLine();
@@ -367,7 +406,7 @@ public class MathTrainingTests{
 			){
 			
 				con.println("Congrats! You got the correct answer.");
-				intCorrectAnswer += 1;
+				dblCorrectAnswer += 1;
 				
 				con.sleep(3000);
 			
@@ -375,15 +414,26 @@ public class MathTrainingTests{
 				con.println("You got the wrong answer. It should either be: " + strPatterns[intLoop][1] + ", " + strPatterns[intLoop][2] + ", " + strPatterns[intLoop][3]);
 				con.sleep(3000);
 			}
-			
-			intNumQuestions += 1;
-			dblPercentage = intCorrectAnswer / intNumQuestions;
+			dblNumQuestions += 1;
+			dblPercentage = Math.round(((dblCorrectAnswer / dblNumQuestions) * 100) * 100) / 100;
+
 			con.clear();
-			
-		}
+		}	
 		
-		// Calculating the percentage of answers
-		con.println("Number of correct answer: " + intCorrectAnswer);
+		// Printing the results to the leaderboard
+		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
+		
+		leaderboard.println(strName);
+		leaderboard.println("Patterns");
+		leaderboard.println(dblPercentage);
+		
+		
+		// Displaying final results
+		con.println("Final Results: ");
+		con.println("Name:           " + strName);
+		con.println("Test type: 	 Patterns");
+		con.println("Win Percentage: %" + dblPercentage);
+		
 		con.sleep(2000);
 		con.println("Thanks for playing!");
 		con.println("Return back to main menu?");
@@ -402,11 +452,14 @@ public class MathTrainingTests{
 		String strAnswer1 = "";
 		String strAnswer2 = "";
 		String strAnswer3 = "";
+		String strName = "";
 		int intQuestions = 0;
-		int intCorrectAnswer = 0;
-		int intNumQuestions = 0;
+		double dblCorrectAnswer = 0.0;
+		double dblNumQuestions = 0.0;
 		double dblPercentage = 0.0;
 		
+		// Retrieving the data stored in strName
+		strName = MathTrainingGame.strName;
 
 		while(area.eof() == false){
 						
@@ -485,18 +538,20 @@ public class MathTrainingTests{
 		int intLoop;
 		
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
-		
+			
+			con.println(strName + "					Patterns Test				%" + dblPercentage);
+			con.println();
+			
 			con.println("Question: ");
 			con.println(strArea[intLoop][0]);
 			String strResponse = con.readLine();
 		
 			if(strResponse.equalsIgnoreCase(strArea[intLoop][1]) || 
 			strResponse.equalsIgnoreCase(strArea[intLoop][2]) ||
-			strResponse.equalsIgnoreCase(strArea[intLoop][3])
-			){
+			strResponse.equalsIgnoreCase(strArea[intLoop][3])){
 			
 				con.println("Congrats! You got the correct answer.");
-				intCorrectAnswer += 1;
+				dblCorrectAnswer += 1;
 				
 				con.sleep(3000);
 			
@@ -504,15 +559,26 @@ public class MathTrainingTests{
 				con.println("You got the wrong answer. It should either be: " + strArea[intLoop][1] + ", " + strArea[intLoop][2] + ", " + strArea[intLoop][3]);
 				con.sleep(3000);
 			}
-			
-			intNumQuestions += 1;
-			dblPercentage = intCorrectAnswer / intNumQuestions;
+			dblNumQuestions += 1;
+			dblPercentage = Math.round(((dblCorrectAnswer / dblNumQuestions) * 100) * 100) / 100;
+
 			con.clear();
-			
-		}
+		}	
 		
-		// Calculating the percentage of answers
-		con.println("Number of correct answer: " + intCorrectAnswer);
+		// Printing the results to the leaderboard
+		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
+		
+		leaderboard.println(strName);
+		leaderboard.println("Area");
+		leaderboard.println(dblPercentage);
+		
+		
+		// Displaying final results
+		con.println("Final Results: ");
+		con.println("Name:           " + strName);
+		con.println("Test type: 	 Area");
+		con.println("Win Percentage: %" + dblPercentage);
+		
 		con.sleep(2000);
 		con.println("Thanks for playing!");
 		con.println("Return back to main menu?");

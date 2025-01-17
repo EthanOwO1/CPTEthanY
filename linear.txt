@@ -22,7 +22,7 @@ If a cab travelled at a constant speed of 60 mph, how far will it travel in 3 ho
 180
 180.0
 one hundred and eighty
-On the recipe, it states that for every 2 cups of flour, 1 cup of sugar needs to be added. \n How much sugar is needed if you use 3 cups of flour?
+For every 2 cups of flour, 1 cup of sugar needs to be added. How much sugar is needed if you use 3 cups of flour?
 1.5
 3/2
 one and five tenths

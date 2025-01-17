@@ -12,12 +12,6 @@ public class MathTrainingGame{
 	public static void main(String[] args){
 		Console con = new Console("Math Training Game", 1280, 720);
 		
-		// Variables and Initialization
-		int intCorrectAnswer = 0;
-		int intNumQuestions = 0;
-		double dblPercentage = 0.0;
-		int intQuestions = 0;
-		
 		// Main Screen of the Math Training Game
 		while(true){
 			con.println("Welcome to Math Training Game");
@@ -34,7 +28,27 @@ public class MathTrainingGame{
 				
 			// The Leaderbaord Screen of the Math Training Game
 			} else if(strDecision.equalsIgnoreCase("l")){
+				TextInputFile leaderboard = new TextInputFile("leaderboard.txt");
+				
+				String strName = "";
+				String strTestType = "";
+				String strPercentage = "";
+				
 				con.println("This is the leaderboard");
+				con.println();
+				con.println("Name		|		Test Type		|	Winning Percentage");
+				con.println("--------------------------------------------------------------------------------");
+				
+				while(leaderboard.eof() == false){
+					strName = leaderboard.readLine();
+					strTestType = leaderboard.readLine();
+					strPercentage = leaderboard.readLine();
+					
+					con.println(strName + "		|" + strTestType + "					|" + strPercentage);
+					
+				}
+				
+				con.println();
 				con.println("Do you want to go back to main menu?");
 				String strBack = con.readLine();
 				con.clear();
@@ -66,7 +80,7 @@ public class MathTrainingGame{
 				con.println("Welcome to our game! Please choose which type of quiz you would like to do?");
 
 				while(tests.eof() == false){
-					con.print(tests.readLine() + " ");
+					con.print(tests.readLine() + ", ");
 				}	
 				
 				con.println();
@@ -75,35 +89,13 @@ public class MathTrainingGame{
 				
 				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
-					dblPercentage = MathTrainingTests.linearTest(con);
-					
-					// Displaying final results
-					con.println("Final Results: ");
-					con.println("Name:           " + strName);
-					con.println("Test type: 	 Linear");
-					con.println("Win Percentage: %" + dblPercentage);
-					
-
-					
-					con.sleep(2000);
-					con.println("Thanks for playing!");
-					con.println("Return back to main menu?");
-					String strBack = con.readLine();
-					System.out.println();
-					con.clear();
-					
+					MathTrainingTests.linearTest(con);
 				}
 				
 				
 				// Algebra Math Practice
 				if(strType.equalsIgnoreCase("algebra")){
-					TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
-
 					MathTrainingTests.algebraTest(con);
-					
-					leaderboard.println(strName);
-					leaderboard.println("Linear");
-					leaderboard.println(dblPercentage);
 				}
 			
 				// Patterns Math Practice
