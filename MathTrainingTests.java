@@ -1,9 +1,8 @@
 import arc.*;
 
 public class MathTrainingTests{
-	public static void linearTest(Console con){
+	public static double linearTest(Console con){
 		TextInputFile linear = new TextInputFile("linear.txt");
-		MathTrainingGame game = new MathTrainingGame();
 
 		// Creating an array to randomize the questions
 		String strLinear[][];
@@ -13,10 +12,14 @@ public class MathTrainingTests{
 		String strAnswer1 = "";
 		String strAnswer2 = "";
 		String strAnswer3 = "";
+		String strName = "";
 		int intQuestions = 0;
-		int intCorrectAnswer = 0;
-		int intNumQuestions = 0;
+		double dblCorrectAnswer = 0.0;
+		double dblNumQuestions = 0.0;
 		double dblPercentage = 0.0;
+		
+		strName = MathTrainingGame.strName;
+
 		
 
 		while(linear.eof() == false){
@@ -96,7 +99,10 @@ public class MathTrainingTests{
 		int intLoop;
 		
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
-		
+			
+			con.println(strName + "					Linear					%" + dblPercentage);
+			con.println();
+			
 			con.println("Question: ");
 			con.println(strLinear[intLoop][0]);
 			String strResponse = con.readLine();
@@ -107,7 +113,7 @@ public class MathTrainingTests{
 			){
 			
 				con.println("Congrats! You got the correct answer.");
-				intCorrectAnswer += 1;
+				dblCorrectAnswer += 1;
 				
 				con.sleep(3000);
 			
@@ -115,23 +121,14 @@ public class MathTrainingTests{
 				con.println("You got the wrong answer. It should either be: " + strLinear[intLoop][1] + ", " + strLinear[intLoop][2] + ", " + strLinear[intLoop][3]);
 				con.sleep(3000);
 			}
-			
-			intNumQuestions += 1;
-			dblPercentage = intCorrectAnswer / intNumQuestions;
+			dblNumQuestions += 1;
+			dblPercentage = Math.round((dblCorrectAnswer / dblNumQuestions) * 100 * 100) / 100;
+
 			con.clear();
-			
 		}
 		
-		
-		// Calculating the percentage of answers
-		con.println("Final Results: ");
-		con.println("Name - ");
-		con.println("Win Percentage: " + dblPercentage);
-		con.sleep(2000);
-		con.println("Thanks for playing!");
-		con.println("Return back to main menu?");
-		String strBack = con.readLine();
-		con.clear();
+		dblPercentage = (dblCorrectAnswer / intQuestions) * 100;
+		return dblPercentage;
 		
 	}
 	

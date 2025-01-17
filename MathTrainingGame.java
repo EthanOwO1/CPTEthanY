@@ -5,7 +5,10 @@
 
 import arc.*;
 
-public class MathTrainingGame{
+public class MathTrainingGame{	
+	
+	static String strName = "";
+	
 	public static void main(String[] args){
 		Console con = new Console("Math Training Game", 1280, 720);
 		
@@ -14,7 +17,6 @@ public class MathTrainingGame{
 		int intNumQuestions = 0;
 		double dblPercentage = 0.0;
 		int intQuestions = 0;
-		String strName = "";		
 		
 		// Main Screen of the Math Training Game
 		while(true){
@@ -73,13 +75,35 @@ public class MathTrainingGame{
 				
 				// Linear Quiz
 				if(strType.equalsIgnoreCase("linear")){
-					MathTrainingTests.linearTest(con);
+					dblPercentage = MathTrainingTests.linearTest(con);
+					
+					// Displaying final results
+					con.println("Final Results: ");
+					con.println("Name:           " + strName);
+					con.println("Test type: 	 Linear");
+					con.println("Win Percentage: %" + dblPercentage);
+					
+
+					
+					con.sleep(2000);
+					con.println("Thanks for playing!");
+					con.println("Return back to main menu?");
+					String strBack = con.readLine();
+					System.out.println();
+					con.clear();
+					
 				}
 				
 				
 				// Algebra Math Practice
 				if(strType.equalsIgnoreCase("algebra")){
+					TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt");
+
 					MathTrainingTests.algebraTest(con);
+					
+					leaderboard.println(strName);
+					leaderboard.println("Linear");
+					leaderboard.println(dblPercentage);
 				}
 			
 				// Patterns Math Practice
