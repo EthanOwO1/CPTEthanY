@@ -207,6 +207,9 @@ public class MathTrainingGame{
 						con.clear();
 						con.drawImage(imgbackground, 0, 0);
 						
+						// Debugging
+						System.out.println("Able to access Leaderboard Menu");	
+						
 						// Variable Declaration/Initialization
 						String strName = "";
 						String strTestType = "";
@@ -295,7 +298,10 @@ public class MathTrainingGame{
 						
 						con.clear();
 						con.drawImage(imgbackground, 0, 0);
-
+						
+						// Debugging
+						System.out.println("Able to access Help Menu");	
+						
 						con.println("--- Help Menu ---");
 						con.sleep(1000);
 						con.println("How to play: ");
@@ -324,6 +330,9 @@ public class MathTrainingGame{
 						con.clear();
 						con.drawImage(imgbackground, 0, 0);
 						
+						// Debugging
+						System.out.println("Able to access Quit Menu");	
+						
 						con.println("Thank you for playing! See you next time!");
 						con.sleep(3000);
 						con.closeConsole();
@@ -335,6 +344,9 @@ public class MathTrainingGame{
 						
 						con.clear();
 						con.drawImage(imgbackground, 0, 0);
+						
+						// Debugging
+						System.out.println("Able to access Secret Menu");	
 						
 						con.println("Welcome to our secret menu");
 						con.println("Did you know that if we removed the wings from a fly, it becomes a walk?");
@@ -354,6 +366,9 @@ public class MathTrainingGame{
 						
 						con.clear();
 						con.drawImage(imgbackground, 0, 0);
+						
+						// Debugging
+						System.out.println("Able to access Cheat Code Menu");	
 						
 						con.println("Enter the secret code");
 						String strCode = con.readLine();

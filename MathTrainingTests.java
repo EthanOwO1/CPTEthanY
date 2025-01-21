@@ -117,6 +117,7 @@ public class MathTrainingTests{
         
 		int intXPosition = 0;
 		int intImageIndex = 0;
+		int intMargin = (1280 / intQuestions) - 10;
 				
 		// Starting the test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
@@ -144,7 +145,7 @@ public class MathTrainingTests{
 				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
 				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
 				
-				intXPosition += 100;
+				intXPosition += intMargin;
 				
 				con.sleep(3000);
 			} 
@@ -307,6 +308,7 @@ public class MathTrainingTests{
         
 		int intXPosition = 0;
 		int intImageIndex = 0;
+		int intMargin = (1280 / intQuestions) - 10;
 		
 		// Starting Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
@@ -334,7 +336,7 @@ public class MathTrainingTests{
 				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
 				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
 				
-				intXPosition += 100;
+				intXPosition += intMargin;
 				
 				con.sleep(3000);
 			} 
@@ -500,6 +502,7 @@ public class MathTrainingTests{
         
 		int intXPosition = 0;
 		int intImageIndex = 0;
+		int intMargin = (1280 / intQuestions) - 10;
 		
 		// Starting the Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
@@ -527,7 +530,7 @@ public class MathTrainingTests{
 				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
 				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
 				
-				intXPosition += 100;
+				intXPosition += intMargin;
 				
 				con.sleep(3000);
 			} 
@@ -692,6 +695,7 @@ public class MathTrainingTests{
         
 		int intXPosition = 0;
 		int intImageIndex = 0;
+		int intMargin = (1280 / intQuestions) - 10;
 		
 		// Starting Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
@@ -718,7 +722,7 @@ public class MathTrainingTests{
 				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
 				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
 				
-				intXPosition += 100;
+				intXPosition += intMargin;
 				
 				con.sleep(3000);
 			} 
