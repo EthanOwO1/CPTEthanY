@@ -1,4 +1,4 @@
-linear
-algebra
-patterns
-area
+Linear
+Algebra
+Patterns
+Area

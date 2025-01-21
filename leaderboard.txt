@@ -1,9 +1,3 @@
-ethan
-Linear
-0.0
 Ethan
 Linear
 90.0
-Ethan
-Algebra
-100.0

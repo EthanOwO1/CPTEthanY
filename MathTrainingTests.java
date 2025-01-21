@@ -3,14 +3,15 @@ import java.awt.image.*;
 
 
 public class MathTrainingTests{
+	
+	// Linear Test
 	public static void linearTest(Console con){
 		TextInputFile linear = new TextInputFile("linear.txt");
-
 
 		// Creating an array to store all of the data from the linear file
 		String strLinear[][];
 
-		// Variables and Initialization
+		// Declaring Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
@@ -38,11 +39,9 @@ public class MathTrainingTests{
 		// Create an array based on the number of questions
 		strLinear = new String[intQuestions][5];
 		
-		
 		linear = new TextInputFile("linear.txt");
 		while(linear.eof() == false){
 			String strRandomNum;
-			
 			int intRow;
 			
 			// Storing all the data in the designated row/column
@@ -60,7 +59,7 @@ public class MathTrainingTests{
 		
 		linear.close();
 		
-		// Bubble Sort 
+		// Bubble Sort: Sorting to randomize the test questions
 		String strTempQuestion;
 		String strTempAns1;
 		String strTempAns2;
@@ -69,7 +68,6 @@ public class MathTrainingTests{
 		int intRow;
 		int intRow2;
 	
-		
 		for(intRow2 = 0; intRow2 < intQuestions - 1; intRow2++){
 			
 			for(intRow = 0; intRow < intQuestions - 1 - intRow2; intRow++){
@@ -100,33 +98,60 @@ public class MathTrainingTests{
 				}
 			}
 		}
-							
+		
 		int intLoop;
 		
+		// Used for my animation			
+		BufferedImage progressAnimation[];
+        progressAnimation = new BufferedImage[4];
+        
+        BufferedImage walking1 = con.loadImage("walking1.png");
+		BufferedImage walking2 = con.loadImage("walking2.png");
+		BufferedImage walking3 = con.loadImage("walking3.png");
+		BufferedImage walking4 = con.loadImage("walking4.png");
+		
+        progressAnimation[0] = walking1;
+        progressAnimation[1] = walking2;
+        progressAnimation[2] = walking3;
+        progressAnimation[3] = walking4;
+        
+		int intXPosition = 0;
+		int intImageIndex = 0;
+				
 		// Starting the test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
 			
+			// Displaying the results as the user is progressing the test
 			con.println(strName + "		Linear		" + dblPercentage + "%");
 			con.println();
 			
+			// Asking Questions
 			con.println("Question: ");
 			printWrappedText(con, strLinear[intLoop][0], 80);
 			String strResponse = con.readLine();
-		
+			
+			// Correct Answer
 			if(strResponse.equalsIgnoreCase(strLinear[intLoop][1]) || 
 			strResponse.equalsIgnoreCase(strLinear[intLoop][2]) ||
 			strResponse.equalsIgnoreCase(strLinear[intLoop][3])
 			){
-			
+				
 				con.println("Congrats! You got the correct answer.");
 				dblCorrectAnswer += 1;
-
+				
+				// Drawing Animations
+				
+				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
+				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
+				
+				intXPosition += 100;
+				
 				con.sleep(3000);
-
-								
+			} 
 			
-			} else {
-				con.println("You got the wrong answer. It should either be: " + strLinear[intLoop][1] + ", " + strLinear[intLoop][2] + ", " + strLinear[intLoop][3]);
+			// Wrong Answer
+			else {
+				con.println("Wrong answer. It should either be: " + strLinear[intLoop][1] + ", " + strLinear[intLoop][2] + ", " + strLinear[intLoop][3]);
 				con.sleep(3000);
 			}
 			dblNumQuestions += 1;
@@ -134,21 +159,37 @@ public class MathTrainingTests{
 
 			con.clear();
 		}
-				
-		// Printing the name to the leaderboard
+		
+		// Check if the user has activated the cheat code
+		boolean blnCheat = MathTrainingGame.blnCheat;
+		
+		if(blnCheat == true && dblPercentage >= 90.0){
+			double maxBonus = 100.0 - dblPercentage;
+			dblPercentage += maxBonus;
+			System.out.println("Activated Cheat Code");
+			
+		} else if(blnCheat == true){
+			dblPercentage += 10.0;
+			System.out.println("Activated Cheat Code");
+		}
+		
+		// Printing the results to the leaderboard
 		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt", true);
 		
 		leaderboard.println(strName);
 		leaderboard.println("Linear");
 		leaderboard.println(dblPercentage);
 		
-		
 		// Displaying final results
+		BufferedImage finalresults = con.loadImage("finalresults.png");
+
+		con.drawImage(finalresults, intXPosition, 600);
+
 		con.println("Final Results: ");
 		con.println("Name:              " + strName);
 		con.println("Test type: 	    Linear");
 		con.println("Win Percentage: " + dblPercentage + "%");
-		
+				
 		con.sleep(2000);
 		con.println("Thanks for playing!");
 		con.println("Return back to main menu?");
@@ -156,14 +197,14 @@ public class MathTrainingTests{
 		con.clear();
 	}
 	
-	
+	// Algebra Test
 	public static void algebraTest(Console con){
 		TextInputFile algebra = new TextInputFile("algebra.txt");
 
 		// Creating an array to randomize the questions
 		String strAlgebra[][];
 
-		// Variables and Initialization
+		// Declaring Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
@@ -178,19 +219,16 @@ public class MathTrainingTests{
 		strName = MathTrainingGame.strName;
 
 		while(algebra.eof() == false){
-						
 			strQuestion = algebra.readLine();
 			strAnswer1 = algebra.readLine();
 			strAnswer2 = algebra.readLine();
 			strAnswer3 = algebra.readLine();
 			intQuestions += 1;
 		}
-		
 		algebra.close();
-					
+		
+		// Create an array based on the number of questions.
 		strAlgebra = new String[intQuestions][5];
-
-		System.out.println("Continue");
 		
 		algebra = new TextInputFile("algebra.txt");
 
@@ -210,10 +248,9 @@ public class MathTrainingTests{
 				strAlgebra[intRow][4] = strRandomNum;
 			}
 		}
-		
 		algebra.close();
 		
-		// Bubble Sort 
+		// Bubble Sort: Sorting to randomize the test questions
 		String strTempQuestion;
 		String strTempAns1;
 		String strTempAns2;
@@ -221,7 +258,6 @@ public class MathTrainingTests{
 		String strRandom;
 		int intRow;
 		int intRow2;
-	
 		
 		for(intRow2 = 0; intRow2 < intQuestions - 1; intRow2++){
 			
@@ -253,18 +289,38 @@ public class MathTrainingTests{
 				}
 			}
 		}
-							
-		int intLoop;
 		
+		// Used for Animation			
+		int intLoop;
+		BufferedImage progressAnimation[];
+        progressAnimation = new BufferedImage[4];
+        
+        BufferedImage walking1 = con.loadImage("walking1.png");
+		BufferedImage walking2 = con.loadImage("walking2.png");
+		BufferedImage walking3 = con.loadImage("walking3.png");
+		BufferedImage walking4 = con.loadImage("walking4.png");
+		
+        progressAnimation[0] = walking1;
+        progressAnimation[1] = walking2;
+        progressAnimation[2] = walking3;
+        progressAnimation[3] = walking4;
+        
+		int intXPosition = 0;
+		int intImageIndex = 0;
+		
+		// Starting Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
 			
+			// Displaying the results as the user is progressing through the test
 			con.println(strName + "		Algebra		" + dblPercentage + "%");
 			con.println();
 			
+			// Asking Questions
 			con.println("Question: ");
 			printWrappedText(con, strAlgebra[intLoop][0], 80);
 			String strResponse = con.readLine();
-		
+			
+			// Correct Answer
 			if(strResponse.equalsIgnoreCase(strAlgebra[intLoop][1]) || 
 			strResponse.equalsIgnoreCase(strAlgebra[intLoop][2]) ||
 			strResponse.equalsIgnoreCase(strAlgebra[intLoop][3])
@@ -273,10 +329,19 @@ public class MathTrainingTests{
 				con.println("Congrats! You got the correct answer.");
 				dblCorrectAnswer += 1;
 				
+				// Drawing Animations
+				
+				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
+				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
+				
+				intXPosition += 100;
+				
 				con.sleep(3000);
+			} 
 			
-			} else {
-				con.println("You got the wrong answer. It should either be: " + strAlgebra[intLoop][1] + ", " + strAlgebra[intLoop][2] + ", " + strAlgebra[intLoop][3]);
+			// Wrong Answer
+			else {
+				con.println("Wrong answer. It should either be: " + strAlgebra[intLoop][1] + ", " + strAlgebra[intLoop][2] + ", " + strAlgebra[intLoop][3]);
 				con.sleep(3000);
 			}
 			dblNumQuestions += 1;
@@ -284,6 +349,18 @@ public class MathTrainingTests{
 
 			con.clear();
 		}	
+		
+		// Check if the user has gotten the cheat code
+		boolean blnCheat = MathTrainingGame.blnCheat;
+		
+		if(blnCheat == true && dblPercentage >= 90.0){
+			double maxBonus = 100.0 - dblPercentage;
+			dblPercentage += maxBonus;
+			System.out.println("Activated Cheat Code");
+		} else if(blnCheat == true){
+			dblPercentage += 10.0;
+			System.out.println("Activated Cheat Code");
+		}
 		
 		// Printing the results to the leaderboard
 		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt", true);
@@ -294,6 +371,10 @@ public class MathTrainingTests{
 		
 		
 		// Displaying final results
+		BufferedImage finalresults = con.loadImage("finalresults.png");
+
+		con.drawImage(finalresults, intXPosition, 600);
+		
 		con.println("Final Results: ");
 		con.println("Name:              " + strName);
 		con.println("Test type: 	    Algebra");
@@ -313,7 +394,7 @@ public class MathTrainingTests{
 		// Creating an array to randomize the questions
 		String strPatterns[][];
 
-		// Variables
+		// Declaring Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
@@ -335,12 +416,10 @@ public class MathTrainingTests{
 			strAnswer3 = patterns.readLine();
 			intQuestions += 1;
 		}
-		
 		patterns.close();
-					
+		
+		// Create an array based on the number of questions.
 		strPatterns = new String[intQuestions][5];
-
-		System.out.println("Continue");
 		
 		patterns = new TextInputFile("patterns.txt");
 
@@ -360,10 +439,9 @@ public class MathTrainingTests{
 				strPatterns[intRow][4] = strRandomNum;
 			}
 		}
-		
 		patterns.close();
 		
-		// Bubble Sort 
+		// Bubble Sort: Sorting to randomize the test questions
 		String strTempQuestion;
 		String strTempAns1;
 		String strTempAns2;
@@ -405,17 +483,37 @@ public class MathTrainingTests{
 			}
 		}
 							
+		// Used for Animation			
 		int intLoop;
+		BufferedImage progressAnimation[];
+        progressAnimation = new BufferedImage[4];
+        
+        BufferedImage walking1 = con.loadImage("walking1.png");
+		BufferedImage walking2 = con.loadImage("walking2.png");
+		BufferedImage walking3 = con.loadImage("walking3.png");
+		BufferedImage walking4 = con.loadImage("walking4.png");
 		
+        progressAnimation[0] = walking1;
+        progressAnimation[1] = walking2;
+        progressAnimation[2] = walking3;
+        progressAnimation[3] = walking4;
+        
+		int intXPosition = 0;
+		int intImageIndex = 0;
+		
+		// Starting the Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
-			
+
+			// Displaying the results as the user is progressing through the test
 			con.println(strName + "		Patterns		" + dblPercentage + "%");
 			con.println();
 			
+			// Asking Question
 			con.println("Question: ");
 			printWrappedText(con, strPatterns[intLoop][0], 80);
 			String strResponse = con.readLine();
-		
+			
+			// Correct Answer
 			if(strResponse.equalsIgnoreCase(strPatterns[intLoop][1]) || 
 			strResponse.equalsIgnoreCase(strPatterns[intLoop][2]) ||
 			strResponse.equalsIgnoreCase(strPatterns[intLoop][3])
@@ -424,10 +522,19 @@ public class MathTrainingTests{
 				con.println("Congrats! You got the correct answer.");
 				dblCorrectAnswer += 1;
 				
+				// Drawing Animations
+				
+				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
+				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
+				
+				intXPosition += 100;
+				
 				con.sleep(3000);
+			} 
 			
-			} else {
-				con.println("You got the wrong answer. It should either be: " + strPatterns[intLoop][1] + ", " + strPatterns[intLoop][2] + ", " + strPatterns[intLoop][3]);
+			// Wrong Answer
+			else {
+				con.println("Wrong answer. It should either be: " + strPatterns[intLoop][1] + ", " + strPatterns[intLoop][2] + ", " + strPatterns[intLoop][3]);
 				con.sleep(3000);
 			}
 			dblNumQuestions += 1;
@@ -435,6 +542,18 @@ public class MathTrainingTests{
 
 			con.clear();
 		}	
+		
+		// Check if the user has gotten the cheat code
+		boolean blnCheat = MathTrainingGame.blnCheat;
+		
+		if(blnCheat == true && dblPercentage >= 90.0){
+			double maxBonus = 100.0 - dblPercentage;
+			dblPercentage += maxBonus;
+			System.out.println("Activated Cheat Code");
+		} else if(blnCheat == true){
+			dblPercentage += 10.0;
+			System.out.println("Activated Cheat Code");
+		}
 		
 		// Printing the results to the leaderboard
 		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt", true);
@@ -445,6 +564,11 @@ public class MathTrainingTests{
 		
 		
 		// Displaying final results
+		
+		BufferedImage finalresults = con.loadImage("finalresults.png");
+
+		con.drawImage(finalresults, intXPosition, 600);
+		
 		con.println("Final Results: ");
 		con.println("Name:              " + strName);
 		con.println("Test type: 	    Patterns");
@@ -463,7 +587,7 @@ public class MathTrainingTests{
 		// Creating an array to randomize the questions
 		String strArea[][];
 
-		// Variables
+		// Declaring Variables and Initialization
 		String strQuestion = "";
 		String strAnswer1 = "";
 		String strAnswer2 = "";
@@ -485,12 +609,10 @@ public class MathTrainingTests{
 			strAnswer3 = area.readLine();
 			intQuestions += 1;
 		}
-		
 		area.close();
-					
+		
+		// Create an array based on the number of questions.
 		strArea = new String[intQuestions][5];
-
-		System.out.println("Continue");
 		
 		area = new TextInputFile("area.txt");
 
@@ -510,7 +632,7 @@ public class MathTrainingTests{
 		
 		area.close();
 		
-		// Bubble Sort 
+		// Bubble Sort: Sorting to randomize the test questions
 		String strTempQuestion;
 		String strTempAns1;
 		String strTempAns2;
@@ -553,17 +675,37 @@ public class MathTrainingTests{
 			}
 		}
 							
+		// Used for Animation			
 		int intLoop;
+		BufferedImage progressAnimation[];
+        progressAnimation = new BufferedImage[4];
+        
+        BufferedImage walking1 = con.loadImage("walking1.png");
+		BufferedImage walking2 = con.loadImage("walking2.png");
+		BufferedImage walking3 = con.loadImage("walking3.png");
+		BufferedImage walking4 = con.loadImage("walking4.png");
 		
+        progressAnimation[0] = walking1;
+        progressAnimation[1] = walking2;
+        progressAnimation[2] = walking3;
+        progressAnimation[3] = walking4;
+        
+		int intXPosition = 0;
+		int intImageIndex = 0;
+		
+		// Starting Test
 		for(intLoop = 0; intLoop < intQuestions; intLoop++){
 			
+			// Displaying the results as the user is progressing through the test
 			con.println(strName + "		Area		" + dblPercentage + "%");
 			con.println();
 			
+			// Asking Questions
 			con.println("Question: ");
 			printWrappedText(con, strArea[intLoop][0], 80);
 			String strResponse = con.readLine();
-		
+			
+			// Correct Answer
 			if(strResponse.equalsIgnoreCase(strArea[intLoop][1]) || 
 			strResponse.equalsIgnoreCase(strArea[intLoop][2]) ||
 			strResponse.equalsIgnoreCase(strArea[intLoop][3])){
@@ -571,10 +713,19 @@ public class MathTrainingTests{
 				con.println("Congrats! You got the correct answer.");
 				dblCorrectAnswer += 1;
 				
+				// Drawing Animations
+				
+				intImageIndex = (intImageIndex + 1) % progressAnimation.length;
+				con.drawImage(progressAnimation[intImageIndex], intXPosition, 600);
+				
+				intXPosition += 100;
+				
 				con.sleep(3000);
+			} 
 			
-			} else {
-				con.println("You got the wrong answer. It should either be: " + strArea[intLoop][1] + ", " + strArea[intLoop][2] + ", " + strArea[intLoop][3]);
+			// Wrong Answer
+			else {
+				con.println("Wrong answer. It should either be: " + strArea[intLoop][1] + ", " + strArea[intLoop][2] + ", " + strArea[intLoop][3]);
 				con.sleep(3000);
 			}
 			dblNumQuestions += 1;
@@ -582,6 +733,18 @@ public class MathTrainingTests{
 
 			con.clear();
 		}	
+		
+		// Check if the user has gotten the cheat code
+		boolean blnCheat = MathTrainingGame.blnCheat;
+		
+		if(blnCheat == true && dblPercentage >= 90.0){
+			double maxBonus = 100.0 - dblPercentage;
+			dblPercentage += maxBonus;
+			System.out.println("Activated Cheat Code");
+		} else if(blnCheat == true){
+			dblPercentage += 10.0;
+			System.out.println("Activated Cheat Code");
+		}
 		
 		// Printing the results to the leaderboard
 		TextOutputFile leaderboard = new TextOutputFile("leaderboard.txt", true);
@@ -592,6 +755,11 @@ public class MathTrainingTests{
 		
 		
 		// Displaying final results
+		
+		BufferedImage finalresults = con.loadImage("finalresults.png");
+
+		con.drawImage(finalresults, intXPosition, 600);
+		
 		con.println("Final Results: ");
 		con.println("Name:              " + strName);
 		con.println("Test type: 	    Area");
@@ -603,26 +771,28 @@ public class MathTrainingTests{
 		String strBack = con.readLine();
 		con.clear();
 	}
-	
-	    public static void printWrappedText(Console con, String text, int maxLineWidth) {
-        String[] words = text.split(" ");
-        StringBuilder currentLine = new StringBuilder();
 
-        for (String word : words) {
+	// Creating a method that can help wrap the text around the console to not get cut off.
+	public static void printWrappedText(Console con, String strText, int intLineWidth) {
+		String[] words = strText.split(" ");
+		StringBuilder currentLine = new StringBuilder();
+
+		for (String word : words) {
 			
-            // Check if adding the next word would exceed the maximum line width
-            if (currentLine.length() + word.length() + 1 > maxLineWidth) {
-                con.println(currentLine.toString().trim()); 
-                currentLine = new StringBuilder();
-            }
-            currentLine.append(word).append(" "); 
-        }
- 
-        if (currentLine.length() > 0) {
-            con.println(currentLine.toString().trim());
-        }
-    }
-	
+			// Check if adding the next word exceeds the maximum line width.
+			// If it does, print the current line and reset the StringBuilder for the next line.		
+			if (currentLine.length() + word.length() + 1 > intLineWidth) {
+				con.println(currentLine.toString().trim()); 
+				currentLine = new StringBuilder();
+				
+			}
+			currentLine.append(word).append(" "); 
+		}
+		// Check if there is any remaining text.
+		if (currentLine.length() > 0) {
+			con.println(currentLine.toString().trim());
+		}
+	}
 }
 	
 

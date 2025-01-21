@@ -38,3 +38,4 @@ A taxi charges a flat fee of $10 and $3 for each km. How much will it cost to tr
 25
 25.0
 twenty-five
+

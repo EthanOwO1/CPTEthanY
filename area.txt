@@ -24,16 +24,16 @@ A hexagon with a perimeter of 24 cm and has an apothem of 12 cm. What is its are
 one hundred and fourty-four
 The distance from the centre to each vertex in a decagon is 12 units. Find the area. (Round to the nearest tenth place).
 421.8
+421.8 units
 4218/10
-four hundred twenty-one and eight tenths
 A farmer has 100 m of fencing. He wants to create a pen for his sheep. What is the length of the rectangle?
 50
 50.0
 fifty
-A circle has an area of 7 units. What is its area?
+A circle has a radius of 7 units. What is its area?
 153.9
+153.9 units
 1539/10
-one hundred fifty-three and nine tenths
 If a parallelogram has a base of 8 cm and a height of 5 cm, what is its area?
 40
 40.0
