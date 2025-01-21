@@ -38,4 +38,8 @@ A taxi charges a flat fee of $10 and $3 for each km. How much will it cost to tr
 25
 25.0
 twenty-five
+What is the x-intercept's x-value of x + y = 10
+10
+10.0
+ten
 

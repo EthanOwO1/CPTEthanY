@@ -38,3 +38,7 @@ What is the first number of this sequence? ?, 24, 120, 720
 6
 6.0
 six
+Find the pattern in this number sequence. 11, 22, 33, 44, ?
+55
+55.0
+fifty-five

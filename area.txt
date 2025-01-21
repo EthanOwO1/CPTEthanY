@@ -26,7 +26,7 @@ The distance from the centre to each vertex in a decagon is 12 units. Find the a
 421.8
 421.8 units
 4218/10
-A farmer has 100 m of fencing. He wants to create a pen for his sheep. What is the length of the rectangle?
+A farmer has 100 m of fencing. What is the side length of the square?
 50
 50.0
 fifty
@@ -38,3 +38,7 @@ If a parallelogram has a base of 8 cm and a height of 5 cm, what is its area?
 40
 40.0
 fourty
+What is the area of a rectangle with a width of 3 units and a length of 28 units.
+84
+84.0
+eighty-four

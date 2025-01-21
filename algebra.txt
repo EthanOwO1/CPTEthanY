@@ -38,3 +38,7 @@ Simplify this equation. (8^2 x 5^2)^0
 1
 1.0
 one
+Solve this equation: 2c - 1 = 11
+6
+6.0
+six
