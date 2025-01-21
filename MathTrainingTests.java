@@ -778,19 +778,19 @@ public class MathTrainingTests{
 
 	// Creating a method that can help wrap the text around the console to not get cut off.
 	public static void printWrappedText(Console con, String strText, int intLineWidth) {
-		String[] words = strText.split(" ");
+		String[] strWords = strText.split(" ");
 		StringBuilder currentLine = new StringBuilder();
 
-		for (String word : words) {
+		for (String strWord : strWords) {
 			
 			// Check if adding the next word exceeds the maximum line width.
 			// If it does, print the current line and reset the StringBuilder for the next line.		
-			if (currentLine.length() + word.length() + 1 > intLineWidth) {
+			if (currentLine.length() + strWord.length() + 1 > intLineWidth) {
 				con.println(currentLine.toString().trim()); 
 				currentLine = new StringBuilder();
 				
 			}
-			currentLine.append(word).append(" "); 
+			currentLine.append(strWord).append(" "); 
 		}
 		// Check if there is any remaining text.
 		if (currentLine.length() > 0) {
